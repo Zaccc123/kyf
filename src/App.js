@@ -1,27 +1,23 @@
-import { Button } from "antd";
-
+import { Row, Col } from "antd";
+import SideBar from "./containers/SideBar";
 import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button type="primary">Ant Design Button</Button>
-      </header>
-    </div>
+    <Row>
+      <Col span={18} push={6}>
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+        </header>
+      </Col>
+      <Col span={6} pull={18}>
+        <SideBar />
+      </Col>
+    </Row>
   );
 }
 
