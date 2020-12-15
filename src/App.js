@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { Row, Col } from "antd";
+import SideBar from "./containers/SideBar";
+import MainChart from "./containers/MainChart";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Row>
+      <Col span={18} push={6}>
+        <MainChart />
+      </Col>
+      <Col span={6} pull={18}>
+        <SideBar />
+      </Col>
+    </Row>
   );
 }
 
