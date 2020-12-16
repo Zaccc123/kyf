@@ -1,16 +1,22 @@
 import { Row, Col } from "antd";
 import SideBar from "./containers/SideBar";
 import MainChart from "./containers/MainChart";
+import Result from "./containers/Result";
 import "./App.css";
 
 function App() {
   return (
     <Row>
-      <Col span={18} push={6}>
-        <MainChart />
+      <Col span={6}>
+        <div className="SideBar">
+          <SideBar />
+        </div>
       </Col>
-      <Col span={6} pull={18}>
-        <SideBar />
+      <Col span={18}>
+        <div className="MainResult">
+          <Result />
+          <MainChart />
+        </div>
       </Col>
     </Row>
   );
