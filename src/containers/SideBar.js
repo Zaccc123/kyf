@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { Tabs, Input } from "antd";
+import { useAppContext } from "../libs/contextLib";
 
 const { TabPane } = Tabs;
 
 export default function SideBar() {
-  const [monthlyIncome, setMonthlyIncome] = useState(3000);
-  const [yearlyIncome, setYearlyIncome] = useState(36000);
-  const [monthlyExpenses, setMonthlyExpenses] = useState(2000);
-  const [yearlyExpenses, setYearlyExpenses] = useState(24000);
-  const [saving, setSaving] = useState(10000);
+  const {
+    yearlyIncome,
+    setYearlyIncome,
+    yearlyExpenses,
+    setYearlyExpenses,
+    currentSaving,
+    setCurrentSaving,
+  } = useAppContext();
+  const [monthlyIncome, setMonthlyIncome] = useState(yearlyIncome / 12);
+  const [monthlyExpenses, setMonthlyExpenses] = useState(yearlyExpenses / 12);
 
   function isNumber(value) {
     const reg = /^-?\d*(\.\d*)?$/;
@@ -91,10 +97,10 @@ export default function SideBar() {
         onChange={(e) => {
           const { value } = e.target;
           if (isNumber(value)) {
-            setSaving(value);
+            setCurrentSaving(value);
           }
         }}
-        value={saving}
+        value={currentSaving}
       />
     </div>
   );

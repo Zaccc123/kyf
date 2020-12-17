@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { Line } from "@ant-design/charts";
+import { useAppContext } from "../libs/contextLib";
 
 export default function MainChart() {
-  const data = [
-    { year: "1991", value: 3 },
-    { year: "1992", value: 4 },
-    { year: "1993", value: 3.5 },
-    { year: "1994", value: 5 },
-    { year: "1995", value: 4.9 },
-    { year: "1996", value: 6 },
-    { year: "1997", value: 7 },
-    { year: "1998", value: 9 },
-    { year: "1999", value: 13 },
-  ];
+  const { yearlyIncome, yearlyExpenses, currentSaving } = useAppContext();
+  const yearlyIncrement = yearlyIncome - yearlyExpenses;
+
+  const data = [{ year: "year 0", value: currentSaving }];
+
+  let year = 1;
+  while (year < 25) {
+    data.push({
+      year: "year " + year,
+      value: currentSaving + yearlyIncrement * year,
+    });
+    year++;
+  }
+
   const config = {
     data,
     height: 400,
